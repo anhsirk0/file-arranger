@@ -1,10 +1,10 @@
 <h1 align="center"><code>Arranger</code></h1>
-<p align="center">Simple & <strong>Capable</strong>files arranger</p>
+<p align="center">Simple & <strong>Capable</strong> files arranger</p>
 
 ## About
-Arranger is a CLI file arranger written in Perl (for portability)
-It cleans up your Directory by moving files to their corresponding Directory by their file extension
-jpg, png, jpeg webp -> Images
+Arranger is a CLI file arranger written in Perl (for portability)  
+It cleans up your Directory by moving files to their corresponding Directory by their file extension  
+jpg, png, jpeg webp -> Images  
 mp4, mkv, avi, flv -> Videos
 and other common filetype extensions
 
