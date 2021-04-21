@@ -46,6 +46,10 @@ see examples for detailed usage
 
 ### Screenshots
 ![out1.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out1.png)
+![out2.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out2.png)
+![out3.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out3.png)
+![out4.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out4.png)
+![out5.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out5.png)
 
 ### Examples
 ```bash
