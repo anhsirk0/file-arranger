@@ -8,7 +8,7 @@ jpg, png, jpeg webp -> Images
 mp4, mkv, avi, flv -> Videos  
 and other common filetype extensions  
 
-### Features
+## Features
 Arranger can
  - control maxdepth when arranging
  - delete empty Directories
@@ -18,7 +18,7 @@ Arranger can
  - move more than one Directory
  - move unrecognised filetypes to 'Other' Directory
 
-### installation
+## installation
 Its just a perl script
 download it make it executable and put somewhere in your $PATH
 
@@ -36,7 +36,7 @@ making it executable
 chmod +x arranger
 ```
 
-### Usage
+## Usage
 
 ```bash
 arranger [dirs] [options]
@@ -44,14 +44,27 @@ arranger [dirs] [options]
 will arrange current Directory  
 see examples for detailed usage
 
-### Screenshots
+## Screenshots
+### arranger with no arguements
 ![out1.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out1.png)
+
+### arranger moving specific files to provided dir
+> arranger -ext py -dir Python
 ![out2.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out2.png)
+
+### arranger reversing the move via a logfile
+> arranger -rev -logfile arrange_log
 ![out3.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out3.png)
+
+### arranger not saving logs and not moving unrecognised filetypes to 'Other'
+> arranger -no-log -no-unknown
 ![out4.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out4.png)
+
+### arranger arranging given Directories
+> arranger folder1 folder2
 ![out5.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out5.png)
 
-### Examples
+## Examples
 ```bash
 arranger mydir1 mydir2 mydir3
 ```
