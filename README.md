@@ -68,43 +68,42 @@ see examples for detailed usage
 ```bash
 arranger mydir1 mydir2 mydir3
 ```
-will arrange mydir1 mydir2 mydir3 Directories one by one
+>will arrange mydir1 mydir2 mydir3 Directories one by one
 
 
 ```bash
 arranger -no-log
 ```
-arrange current Directory and wont save logfile
+>arrange current Directory and wont save logfile
 
 
 ```bash
 arranger -delete-empty 
 ```
-arrange current Directory and also delete empty Directories 
-
+>arrange current Directory and also delete empty Directories 
 
 
 ```bash
 arranger -delete-empty -no-arrange
 ```
-only delete empty Directories , wont arrange
+>only delete empty Directories , wont arrange
 
 
 ```bash
 arranger -no-unknown 
 ```
-arrange current Directory and wont move files with unrecognised extensions
+>arrange current Directory and wont move files with unrecognised extensions
 
 
 ```bash
 arranger -ext pl -dir "Perl" 
 ```
-move all files with pl extension to Directory 'Perl'
+>move all files with pl extension to Directory 'Perl'
 
 
 ```bash
 arranger -ext jpg png jpeg svg -dir "Images" 
 ```
-move all files with any of {jpg, png, jpeg, svg} extension to Directory 'Images'
+>move all files with any of {jpg, png, jpeg, svg} extension to Directory 'Images'
 
 
