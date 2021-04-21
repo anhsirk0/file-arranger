@@ -21,11 +21,12 @@ my $no_others;
 my $no_arrange;
 my $delete_empty;
 my $moved_files_count = 0;
-# store initial & final loacation of moved files
-my $files_moved_details = "";
+my $config_file = $ENV{HOME} . "/.config/arranger/arranger.conf";
 my $w_logfile = "arrange_log_" . localtime();
 $w_logfile =~ s/ /_/g; # replace spaces with underscores
 
+# store initial & final loacation of moved files
+my $files_moved_details = "";
 # hash; Directory name as keys & file extensions as values
 my %def_ext;
 $def_ext{"Images"} = [qw/jpg png jpeg svg webp/];
@@ -33,6 +34,18 @@ $def_ext{"Music"} = [qw/mp3 m3u ogg wav/];
 $def_ext{"Videos"} = [qw/mp4 mkv avi flv/];
 $def_ext{"Documents"} = [qw/pdf txt doc/];
 $def_ext{"Compressed"} = [qw/gz xz zip rar 7z/];
+
+sub read_config {
+    unless (-f $config_file) { return }
+    open(FH, "<" . $config_file) or die "Unable to open $config_file";
+    %def_ext = ();
+    while(<FH>) {
+        $_ =~ s/\#.*//; # ignore comments
+        my @info = split " ", $_;
+        my $dir = shift @info;
+        $def_ext{$dir} = \@info;
+    }
+}
 
 # Max depth feature; preprocessor fn for File::Find
 sub preprocess {
@@ -156,6 +169,8 @@ sub print_help {
 }
 
 sub main {
+    read_config();
+
     GetOptions (
         "help" => \$help,
         "maxdepth=i" => \$maxdepth,
