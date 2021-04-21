@@ -165,7 +165,16 @@ sub start_arrange {
 sub print_help {
     print "usage: arranger [dirs] [options]\n\n";
     print "-m, --maxdepth=INT   specify maxdepth (> 1)\n";
-    print "-m, --maxdepth=INT    \n";
+    print "-h, --help    show this help message\n";
+    print "-v, --verbose    print file name while moving\n\n";
+    print "-rev, --revert    revert the move (require a logfile)\n";
+    print "-log, --logfile=STR    specify logfile (required for reverting)\n\n";
+    print "-no-log    dont save log\n"
+    print "-no-unknown    dont move unrecognised filetypes\n"
+    print "-no-arrange    dont move any file (helpful if you only want to delete empty dirs)\n"
+    print "-delete-empty    delete empty directories (if any)\n\n"
+    print "-ext or --extensions=STRs specify extension(s) to move (requires a Directory)"
+    print "-dir or --directory=STR specify the Directory to move files in (required by -ext)"
 }
 
 sub main {
@@ -182,7 +191,7 @@ sub main {
         "no-arrange" => \$no_arrange,
         "delete-empty" => \$delete_empty,
         "extensions=s{1,}" => \@user_ext,
-        "dir=s" => \$user_dir
+        "directory=s" => \$user_dir
     ) or die("Error in command line arguments\n");
 
     if ($help) {
