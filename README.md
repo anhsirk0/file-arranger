@@ -2,7 +2,7 @@
 <p align="center">Simple & <strong>Capable</strong> files arranger</p>
 
 ## About
-Arranger is a CLI file arranger written in Perl (for portability)  
+Arranger is a CLI file arranger written in Perl   
 It cleans up your Directory by moving files to their corresponding Directory by their file extension  
 jpg, png, jpeg webp -> Images  
 mp4, mkv, avi, flv -> Videos  
@@ -10,7 +10,7 @@ and other common filetype extensions
 
 ### Features
 Arranger can
- - control maxdepth
+ - control maxdepth when arranging
  - delete empty Directories
  - save logs of what exactly happend
  - revert the move using logfile
@@ -20,7 +20,7 @@ Arranger can
 
 ### installation
 Its just a perl script
-download it make it executable and put in your path folder
+download it make it executable and put somewhere in your $PATH
 
 with wget
 ``` bash
@@ -36,14 +36,18 @@ making it executable
 chmod +x arranger
 ```
 
-### usage
+### Usage
 
 ```bash
-arranger
+arranger [dirs] [options]
 ```
-will arrange current Directory
+will arrange current Directory  
+see examples for detailed usage
 
+### Screenshots
+![out1.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out1.png)
 
+### Examples
 ```bash
 arranger mydir1 mydir2 mydir3
 ```
@@ -85,7 +89,5 @@ move all files with pl extension to Directory 'Perl'
 arranger -ext jpg png jpeg svg -dir "Images" 
 ```
 move all files with any of {jpg, png, jpeg, svg} extension to Directory 'Images'
-
-
 
 
