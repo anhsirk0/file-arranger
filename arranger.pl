@@ -142,7 +142,6 @@ sub start_arrange {
     # if 1 or more dirs are specified arrange them all one by one
     if (scalar @ARGV >= 1) {
         foreach my $dir (@ARGV) {
-            print $dir . "\n";
             if (-d $dir) { arrange($dir) }
         }
     } else { # if no dir is given arrange current dir
