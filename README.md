@@ -15,7 +15,7 @@ Arranger can
  - save logs of what exactly happend
  - revert the move using logfile
  - move only specific files by provided file extensions & Directory
- - move more than one Directory
+ - arrange more than one Directory
  - move unrecognised filetypes to 'Other' Directory
 
 ## installation
