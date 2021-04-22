@@ -106,4 +106,26 @@ arranger -ext jpg png jpeg svg -dir "Images"
 ```
 >move all files with any of {jpg, png, jpeg, svg} extension to Directory 'Images'
 
+## Tweaking arranger via config file
+you need to create a file ~/.config/arranger/arranger.conf
+
+you can download the sample config file and move it into the config Directory
+
+```bash
+wget https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arranger.conf
+```
+### or
+with curl
+``` bash
+curl https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arranger.conf --output arranger.conf
+```
+
+### move to config dir
+```bash
+mv arranger.conf ~/.config/arranger/arranger.conf
+```
+
+## About config file
+ - everything should be single space separated(no trailing spaces)
+ - first word of line would be Directory name rest would be file extensions associated with that Directory
 
