@@ -169,12 +169,12 @@ sub print_help {
     print "-v, --verbose    print file name while moving\n\n";
     print "-rev, --revert    revert the move (require a logfile)\n";
     print "-log, --logfile=STR    specify logfile (required for reverting)\n\n";
-    print "-no-log    dont save log\n"
-    print "-no-unknown    dont move unrecognised filetypes\n"
-    print "-no-arrange    dont move any file (helpful if you only want to delete empty dirs)\n"
-    print "-delete-empty    delete empty directories (if any)\n\n"
-    print "-ext or --extensions=STRs specify extension(s) to move (requires a Directory)"
-    print "-dir or --directory=STR specify the Directory to move files in (required by -ext)"
+    print "-no-log    dont save log\n";
+    print "-no-unknown    dont move unrecognised filetypes\n";
+    print "-no-arrange    dont move any file (helpful if you only want to delete empty dirs)\n";
+    print "-delete-empty    delete empty directories (if any)\n\n";
+    print "-ext or --extensions=STRs specify extension(s) to move (requires a Directory)";
+    print "-dir or --directory=STR specify the Directory to move files in (required by -ext)";
 }
 
 sub main {
