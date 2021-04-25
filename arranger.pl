@@ -56,7 +56,8 @@ sub preprocess {
 # Select files and directories; filtering fn for File:Find
 sub wanted {
     my $name = $File::Find::name;
-    if ($name =~ /^\./) { return } # ignore hidden files/dirs
+    my $file = (split "/", $name)[-1];
+    if($file =~ /^\./) { return } # ignore hidden files/dirs
     if (-f) {
         push(@all_files, $name);
     }
