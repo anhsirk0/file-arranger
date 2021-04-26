@@ -171,6 +171,7 @@ sub print_help {
     print "usage: arranger [dirs] [options]\n\n";
     print "-m, --maxdepth=INT   specify maxdepth (> 1)\n";
     print "-h, --help    show this help message\n";
+    print "-dry, --dry-run    show what will happen without actually arranging\n";
     print "-v, --verbose    print file name while moving\n\n";
     print "-rev, --revert    revert the move (require a logfile)\n";
     print "-log, --logfile=STR    specify logfile (required for reverting)\n\n";
