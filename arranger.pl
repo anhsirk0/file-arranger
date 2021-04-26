@@ -69,8 +69,13 @@ sub wanted {
 
 # create dir if not already exist and move file to dir
 sub create_dir_and_move {
-    my ($new_dir, $f) = @_; 
-    my $dir_created = (-d $new_dir) || make_path($new_dir);
+    my ($new_dir, $f) = @_;
+    my $dir_created;
+    if ($dry_run) { # if dry run dont create dir
+        $dir_created = 1
+    } else {
+        $dir_created = (-d $new_dir) || make_path($new_dir);
+    }
     my $file_name = (split /\//, $f)[-1];
     if ($dir_created) {
         my $new_file_path = "$new_dir/$file_name";
@@ -179,8 +184,8 @@ sub print_help {
     print "-no-unknown    dont move unrecognised filetypes\n";
     print "-no-arrange    dont move any file (helpful if you only want to delete empty dirs)\n";
     print "-delete-empty    delete empty directories (if any)\n\n";
-    print "-ext or --extensions=STRs specify extension(s) to move (requires a Directory)";
-    print "-dir or --directory=STR specify the Directory to move files in (required by -ext)";
+    print "-ext or --extensions=STRs specify extension(s) to move (requires a Directory)\n";
+    print "-dir or --directory=STR specify the Directory to move files in (required by -ext)\n";
 }
 
 sub main {
