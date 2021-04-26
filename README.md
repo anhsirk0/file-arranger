@@ -64,6 +64,10 @@ see examples for detailed usage
 > arranger folder1 folder2
 ![out5.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out5.png)
 
+### arranger dry-run
+> arranger -dry-run
+![dry.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/dry.png)
+
 ## Examples
 ```bash
 arranger mydir1 mydir2 mydir3
@@ -140,6 +144,6 @@ mv arranger.conf ~/.config/arranger/arranger.conf
 **-no-unknown**    dont move unrecognised filetypes";  
 **-no-arrange**    dont move any file (helpful if you only want to delete empty dirs)";  
 **-delete-empty**    delete empty directories (if any)";  
-**-ext or **--extensions=STRs** specify extension(s) to move (requires a Directory)";  
-**-dir or **--directory=STR** specify the Directory to move files in (required by -ext)";  
+**-ext** or **--extensions=STRs** specify extension(s) to move (requires a Directory)";  
+**-dir** or **--directory=STR** specify the Directory to move files in (required by -ext)";  
 
