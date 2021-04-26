@@ -232,7 +232,7 @@ sub main {
     }
 
     # write info to a file
-    unless ($keep_log) {
+    unless ($keep_log || $dry_run) {
         save_log();
     }
     print $moved_files_count . " Files moved\n"
