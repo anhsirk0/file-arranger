@@ -184,8 +184,8 @@ sub print_help {
     print "-no-unknown    dont move unrecognised filetypes\n";
     print "-no-arrange    dont move any file (helpful if you only want to delete empty dirs)\n";
     print "-delete-empty    delete empty directories (if any)\n\n";
-    print "-ext or --extensions=STRs specify extension(s) to move (requires a Directory)\n";
-    print "-dir or --directory=STR specify the Directory to move files in (required by -ext)\n";
+    print "-ext, --extensions=STRs specify extension(s) to move (requires a Directory)\n";
+    print "-dir, --directory=STR specify the Directory to move files in (required by -ext)\n";
 }
 
 sub main {

@@ -129,3 +129,17 @@ mv arranger.conf ~/.config/arranger/arranger.conf
  - everything should be single space separated(no trailing spaces)
  - first word of line would be Directory name rest would be file extensions associated with that Directory
 
+## Available options
+**-m** or **--maxdepth=INT**   specify maxdepth (> 1)";  
+**-h** or **--help**    show this help message";  
+**-dry** or **--dry-run**    show what will happen without actually arranging";  
+**-v** or **--verbose**    print file name while moving";  
+**-rev** or **--revert**    revert the move (require a logfile)";  
+**-log** or **--logfile=STR**    specify logfile (required for reverting)";  
+**-no-log**    dont save log";  
+**-no-unknown**    dont move unrecognised filetypes";  
+**-no-arrange**    dont move any file (helpful if you only want to delete empty dirs)";  
+**-delete-empty**    delete empty directories (if any)";  
+**-ext or **--extensions=STRs** specify extension(s) to move (requires a Directory)";  
+**-dir or **--directory=STR** specify the Directory to move files in (required by -ext)";  
+
