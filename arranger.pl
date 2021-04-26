@@ -16,6 +16,7 @@ my $help;
 my $revert;
 my $verbose;
 my $logfile;
+my $dry_run;
 my $keep_log;
 my $no_others;
 my $no_arrange;
@@ -76,8 +77,9 @@ sub create_dir_and_move {
         if (-f $new_file_path) {
             print "$f already exists \n";
         } else {
-            if (move($f, $new_dir)) {
-                my $detail = "$f -> $new_file_path\n";
+            my $detail = "$f -> $new_file_path\n";
+            if ($dry_run) { print $detail; return }
+            if (move($f, $new_dir)) { # if moving is successfull
                 $files_moved_details .= $detail;
                 if ($verbose) { print $detail; }
                 $moved_files_count++;
@@ -188,6 +190,7 @@ sub main {
         "maxdepth=i" => \$maxdepth,
         "revert" => \$revert,
         "verbose" => \$verbose,
+        "dry-run" => \$dry_run,
         "logfile=s" => \$logfile,
         "no-log" => \$keep_log,
         "no-unknown" => \$no_others,
