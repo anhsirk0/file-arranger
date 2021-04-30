@@ -68,6 +68,11 @@ see examples for detailed usage
 > arranger -dry-run
 ![dry.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/dry.png)
 
+### arranger name/iname
+> arranger -name "Episode.*" -dir "Episodes"
+> arranger -iname "episode.*" -dir "Episodes"
+![name.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/name.png)
+
 ## Examples
 ```bash
 arranger mydir1 mydir2 mydir3
@@ -109,6 +114,23 @@ arranger -ext pl -dir "Perl"
 arranger -ext jpg png jpeg svg -dir "Images" 
 ```
 >move all files with any of {jpg, png, jpeg, svg} extension to Directory 'Images'
+
+
+```bash
+arranger -name ".*Season.*1.*" -dir "Season_1" 
+```
+```bash
+arranger -iname ".*season.*1.*" -dir "Season_1" 
+```
+```bash
+arranger -iname "episode.*" ".*part.*" -name ".*Videos.*" -dir "Episodes_Parts_and_Videos" 
+```
+>move all files with given regex pattern  to Directory 'Season_1'
+>name for case sensitive regex matches and iname for case insensitive
+>you can use multiple patterns for both -name and -iname 
+>you dont need to specify ^ (start of line) and $ (end of line)
+**You should be careful while using name/iname , it doesnot match wildcards**  
+**It only match regex patterns**
 
 ## Tweaking arranger via config file
 you need to create a file ~/.config/arranger/arranger.conf
