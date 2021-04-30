@@ -11,6 +11,8 @@ my $maxdepth = 1;
 my @all_files = ();
 my @all_dirs = ();
 my @user_ext = ();
+my @user_names = ();
+my @user_inames = ();
 my $user_dir;
 my $help;
 my $revert;
@@ -18,6 +20,7 @@ my $verbose;
 my $logfile;
 my $dry_run;
 my $keep_log;
+my $by_name;
 my $no_others;
 my $no_arrange;
 my $delete_empty;
@@ -95,8 +98,9 @@ sub create_dir_and_move {
     }
 }
 
-# find all files and start moving them to their corresponding dir
-# also find dirs
+# find all files this fn is also used just to find files
+# and start moving them to their corresponding dir
+# also find dirs 
 sub arrange {
     my ($dir) = @_;
     $dir ||= getcwd;
@@ -108,11 +112,11 @@ sub arrange {
     }, $dir);
 
     unless (@all_files) { print "No files to move\n"; exit }
+    if ($by_name) { arrange_by_name($dir) ; return }
     if ($no_arrange) { return }
     foreach my $f (@all_files) {
         my $f_ext = (split /\./, $f)[-1];
         my $file_moved = 0;
-
         foreach my $d (keys %def_ext) {
             if (grep /$f_ext$/, @{$def_ext{$d}}) {
                 my $new_dir = "$dir/$d";
@@ -124,6 +128,29 @@ sub arrange {
         unless ($file_moved || $no_others) {
             my $new_dir = $dir . "/Other";
             create_dir_and_move($new_dir, $f);
+        }
+    }
+}
+
+sub arrange_by_name {
+    my ($dir) = @_;
+    my $new_dir = "$dir/$user_dir";
+    my $f_moved;
+    foreach my $f (@all_files) {
+        my $file_name = (split "/", $f)[-1];
+        foreach my $pattern (@user_names) {
+            if ($file_name =~ /^$pattern$/) {
+                create_dir_and_move($new_dir, $f);
+                $f_moved = 1;
+                last;
+            }
+        }
+        if ($f_moved) { last } # file already moved
+        foreach my $pattern (@user_inames) {
+            if ($file_name =~ /^$pattern$/i) {
+                create_dir_and_move($new_dir, $f);
+                last;
+            }
         }
     }
 }
@@ -145,7 +172,7 @@ sub revert_move {
 sub delete_empty_dirs {
     my $dirs_deleted = 0;
     unless (@all_dirs && $revert) {
-        $no_arrange = 1;
+        $no_arrange = 1; # just find files
         arrange();
     }
     foreach my $dir (@all_dirs) {
@@ -203,7 +230,9 @@ sub main {
         "no-arrange" => \$no_arrange,
         "delete-empty" => \$delete_empty,
         "extensions=s{1,}" => \@user_ext,
-        "directory=s" => \$user_dir
+        "directory=s" => \$user_dir,
+        "name=s{1,}" => \@user_names,
+        "iname=s{1,}" => \@user_inames
     ) or die("Error in command line arguments\n");
 
     if ($help) {
@@ -211,13 +240,24 @@ sub main {
         exit;
     }
 
-    if ($user_dir && @user_ext) {
+    if (@user_ext && $user_dir) {
         %def_ext = ();
         $def_ext{$user_dir} = \@user_ext;
         $no_others = 1;
-    } elsif ($user_dir || @user_ext) {
+    } elsif (@user_ext && ! $user_dir) {
         print "Must specify Extensions and Directory\n";
         print "Example: arranger -ext png -dir Images\n";
+        exit;
+    }
+
+    if (@user_names || @user_inames) {
+        $by_name = 1;
+    }
+
+    if ($by_name && ! $user_dir) {
+        print "Must specify Patterns and Directory\n";
+        print "Example: arranger -name Episode -dir Episodes\n";
+        print "Example: arranger -iname episode -dir Episodes\n";
         exit;
     }
 
