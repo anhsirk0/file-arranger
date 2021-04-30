@@ -145,7 +145,7 @@ sub arrange_by_name {
                 last;
             }
         }
-        if ($f_moved) { last } # file already moved
+        if ($f_moved) { next } # file already moved
         foreach my $pattern (@user_inames) {
             if ($file_name =~ /^$pattern$/i) {
                 create_dir_and_move($new_dir, $f);
