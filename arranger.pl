@@ -182,6 +182,7 @@ sub delete_empty_dirs {
 }
 
 sub save_log {
+    unless ($files_moved_details) { return }
     open(FH, ">" . $w_logfile) or die "Unable to open $w_logfile\n";
     print FH $files_moved_details;
     close(FH);
