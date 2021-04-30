@@ -125,10 +125,10 @@ arranger -iname ".*season.*1.*" -dir "Season_1"
 ```bash
 arranger -iname "episode.*" ".*part.*" -name ".*Videos.*" -dir "Episodes_Parts_and_Videos" 
 ```
->move all files with given regex pattern  to Directory 'Season_1'
->name for case sensitive regex matches and iname for case insensitive
->you can use multiple patterns for both -name and -iname 
->you dont need to specify ^ (start of line) and $ (end of line)
+>move all files with given regex pattern  to Directory 'Season_1'  
+>name for case sensitive regex matches and iname for case insensitive  
+>you can use multiple patterns for both -name and -iname   
+>you dont need to specify ^ (start of line) and $ (end of line)  
 **You should be careful while using name/iname , it doesnot match wildcards**  
 **It only match regex patterns**
 
@@ -167,5 +167,7 @@ mv arranger.conf ~/.config/arranger/arranger.conf
 **-no-arrange**    dont move any file (helpful if you only want to delete empty dirs)  
 **-delete-empty**    delete empty directories (if any)  
 **-ext** or **--extensions=STRs** specify extension(s) to move (requires a Directory)  
-**-dir** or **--directory=STR** specify the Directory to move files in (required by -ext)  
+**-name=STRs** specify patterns (case sensitive) to move files (requires a Directory)  
+**-iname=STRs** specify patterns (case insensitive) to move files (requires a Directory)  
+**-dir** or **--directory=STR** specify the Directory to move files in (required by -ext/name/iname)  
 
