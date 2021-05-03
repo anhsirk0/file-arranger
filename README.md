@@ -12,11 +12,12 @@ and other common filetype extensions
 Arranger can
  - control maxdepth when arranging
  - delete empty Directories
- - save logs of what exactly happend
+ - save logs of what exactly happened
  - revert the move using logfile
  - move only specific files by provided file extensions & Directory
  - arrange more than one Directory
  - move unrecognised filetypes to 'Other' Directory
+ - arrange files by patterns
 
 ## installation
 Its just a perl script
