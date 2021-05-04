@@ -1,4 +1,8 @@
 #!/usr/bin/env perl
+
+# Simple & Capable files arranger
+# https://github.com/anhsirk0/file-arranger
+
 use strict;
 use File::Find;
 use File::Copy;
