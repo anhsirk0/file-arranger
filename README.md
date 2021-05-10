@@ -19,9 +19,15 @@ Arranger can
  - move unrecognised filetypes to 'Other' Directory
  - arrange files by patterns
 
-## installation
+## Installation
 Its just a perl script
 download it make it executable and put somewhere in your $PATH
+
+## Via install script
+```bash
+curl https://raw.githubusercontent.com/anhsirk0/file-arranger/master/install.sh | bash
+```
+## Manually
 
 with wget
 ``` bash
@@ -35,6 +41,10 @@ curl https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arranger.pl
 making it executable
 ```bash
 chmod +x arranger
+```
+copying it to $PATH (~/.local/bin/ , this step is optional)
+```bash
+cp arranger ~/.local/bin/
 ```
 
 ## Usage
