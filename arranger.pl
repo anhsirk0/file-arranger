@@ -48,7 +48,12 @@ sub read_config {
     open(FH, "<" . $config_file) or die "Unable to open $config_file";
     %def_ext = ();
     while(<FH>) {
-        $_ =~ s/\#.*//; # ignore comments
+        for ($_) {
+            s/\#.*//; # ignore comments
+            s/\s+/ /g; # strip whitespace
+            s/^\s+/ /g; # strip left whitespace
+            s/\s+$/ /g; # strip right whitespace
+        }
         my @info = split " ", $_;
         my $dir = shift @info;
         $def_ext{$dir} = \@info;
