@@ -163,7 +163,7 @@ mv arranger.conf ~/.config/arranger/arranger.conf
 ```
 
 ## About config file
- - everything should be single space separated(no trailing spaces)
+ - everything should be space separated (don't worry about extra/trailing spaces)
  - first word of line would be Directory name rest would be file extensions associated with that Directory
 
 ## Available options
