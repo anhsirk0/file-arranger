@@ -25,7 +25,7 @@ download it make it executable and put somewhere in your $PATH
 
 ## Via install script
 ```bash
-curl https://raw.githubusercontent.com/anhsirk0/file-arranger/master/install.sh | bash
+bash -c "$(curl https://raw.githubusercontent.com/anhsirk0/file-arranger/master/install.sh)"
 ```
 ## Manually
 
