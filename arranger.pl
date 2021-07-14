@@ -37,7 +37,7 @@ $w_logfile =~ s/ /_/g; # replace spaces with underscores
 my $files_moved_details = "";
 # hash; Directory name as keys & file extensions as values
 my %def_ext;
-$def_ext{"Images"} = [qw/jpg png jpeg svg webp gif iopusco svg/];
+$def_ext{"Images"} = [qw/jpg png jpeg svg webp gif ico svg/];
 $def_ext{"Music"} = [qw/mp3 m3u ogg wav opus mid midi/];
 $def_ext{"Videos"} = [qw/mp4 mkv avi flv ts mpeg/];
 $def_ext{"Documents"} = [qw/pdf txt doc docx epub txt xlsx xls pptx ppt odt ods csv/];
