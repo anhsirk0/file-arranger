@@ -51,8 +51,8 @@ sub read_config {
         for ($_) {
             s/\#.*//; # ignore comments
             s/\s+/ /g; # strip whitespace
-            s/^\s+/ /g; # strip left whitespace
-            s/\s+$/ /g; # strip right whitespace
+            s/^\s+//g; # strip left whitespace
+            s/\s+$//g; # strip right whitespace
         }
         my @info = split " ", $_;
         my $dir = shift @info;
