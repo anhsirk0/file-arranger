@@ -60,6 +60,13 @@ sub read_config {
     }
 }
 
+sub print_detail {
+    my ($detail) = @_;
+    my $current_dir = getcwd;
+    $detail =~ s/$current_dir\///g;
+    print $detail;
+}
+
 # Max depth feature; preprocessor fn for File::Find
 sub preprocess {
     my $depth = $File::Find::dir =~ tr[/][];
@@ -70,7 +77,7 @@ sub preprocess {
 sub wanted {
     my $name = $File::Find::name;
     my $file = (split "/", $name)[-1];
-    if($file =~ /^\./) { return } # ignore hidden files/dirs
+    if ($file =~ /^\./) { return } # ignore hidden files/dirs
     if (-f) {
         push(@all_files, $name);
     }
@@ -95,10 +102,10 @@ sub create_dir_and_move {
             print "$f already exists \n";
         } else {
             my $detail = "$f -> $new_file_path\n";
-            if ($dry_run) { print $detail; return }
+            if ($dry_run) { print_detail($detail); return }
             if (move($f, $new_dir)) { # if moving is successfull
                 $files_moved_details .= $detail;
-                if ($verbose) { print $detail; }
+                if ($verbose) { print_detail($detail); }
                 $moved_files_count++;
             }
         }
@@ -109,7 +116,7 @@ sub create_dir_and_move {
 
 # find all files this fn is also used just to find files
 # and start moving them to their corresponding dir
-# also find dirs 
+# also find dirs
 sub arrange {
     my ($dir) = @_;
     $dir ||= getcwd;
