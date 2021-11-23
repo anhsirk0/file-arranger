@@ -154,7 +154,9 @@ sub arrange_by_name {
     my $f_moved;
     foreach my $f (@all_files) {
         my $file_name = (split "/", $f)[-1];
-        foreach my $pattern (@user_names) {
+        foreach my $name (@user_names) {
+            my $pattern = $name;
+            $pattern =~ s/\*/.*/g; # wildcard to regex
             if ($file_name =~ /^$pattern$/) {
                 create_dir_and_move($new_dir, $f);
                 $f_moved = 1;
@@ -162,7 +164,9 @@ sub arrange_by_name {
             }
         }
         if ($f_moved) { next } # file already moved
-        foreach my $pattern (@user_inames) {
+        foreach my $name (@user_inames) {
+            my $pattern = $name;
+            $pattern =~ s/\*/.*/g; # wildcard to regex
             if ($file_name =~ /^$pattern$/i) {
                 create_dir_and_move($new_dir, $f);
                 last;
