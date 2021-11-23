@@ -56,30 +56,30 @@ will arrange current Directory
 see examples for detailed usage
 
 ## Screenshots
-### arranger with no arguements
+### with no arguements
 ![out1.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out1.png)
 
-### arranger moving specific files to provided dir
+### moving specific files to provided dir
 > arranger -ext py -dir Python
 ![out2.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out2.png)
 
-### arranger reversing the move via a logfile
+### reversing the move via a logfile
 > arranger -rev -logfile arrange_log
 ![out3.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out3.png)
 
-### arranger not saving logs and not moving unrecognised filetypes to 'Other'
+### not saving logs and not moving unrecognised filetypes to 'Other'
 > arranger -no-log -no-unknown
 ![out4.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out4.png)
 
-### arranger arranging given Directories
+### arranging given Directories
 > arranger folder1 folder2
 ![out5.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out5.png)
 
-### arranger dry-run
+### dry-run
 > arranger -dry-run
 ![dry.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/dry.png)
 
-### arranger name/iname
+### name/iname
 > arranger -name "Episode.*" -dir "Episodes"
 > arranger -iname "episode.*" -dir "Episodes"
 ![name.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/name.png)
