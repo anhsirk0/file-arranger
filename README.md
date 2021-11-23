@@ -72,7 +72,7 @@ see examples for detailed usage
 ![out4.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out4.png)
 
 ### arranging given Directories
-> arranger folder1 folder2
+> arranger dir1 dir2
 ![out5.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out5.png)
 
 ### dry-run
