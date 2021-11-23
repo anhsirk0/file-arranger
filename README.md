@@ -59,6 +59,10 @@ see examples for detailed usage
 ### with no arguements
 ![out1.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out1.png)
 
+### adding verbose
+> arranger -v
+![out6.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out6.png)
+
 ### moving specific files to provided dir
 > arranger -ext py -dir Python
 ![out2.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out2.png)
