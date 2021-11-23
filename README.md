@@ -83,6 +83,10 @@ see examples for detailed usage
 > arranger -dry-run
 ![dry.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/dry.png)
 
+### deleting empty directories
+> arranger -de -no-arrange
+![delete.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/delete.png)
+
 ### name/iname
 > arranger -name "Episode.*" -dir "Episodes"
 > arranger -iname "episode.*" -dir "Episodes"
@@ -98,7 +102,7 @@ arranger mydir1 mydir2 mydir3
 ```bash
 arranger -no-log
 ```
->arrange current Directory and wont save logfile
+>arrange current Directory and dont save logfile
 
 
 ```bash
@@ -110,13 +114,13 @@ arranger -delete-empty
 ```bash
 arranger -delete-empty -no-arrange
 ```
->only delete empty Directories , wont arrange
+>only delete empty Directories , dont arrange
 
 
 ```bash
 arranger -no-unknown 
 ```
->arrange current Directory and wont move files with unrecognised extensions
+>arrange current Directory and dont move files with unrecognised extensions
 
 
 ```bash
