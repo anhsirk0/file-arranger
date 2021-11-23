@@ -160,16 +160,16 @@ sub arrange_by_name {
             if ($file_name =~ /^$pattern$/) {
                 create_dir_and_move($new_dir, $f);
                 $f_moved = 1;
-                last;
+                last; # break out of loop
             }
         }
-        if ($f_moved) { next } # file already moved
+        if ($f_moved) { next } # file moved ; continue to next file
         foreach my $name (@user_inames) {
             my $pattern = $name;
             $pattern =~ s/\*/.*/g; # wildcard to regex
             if ($file_name =~ /^$pattern$/i) {
                 create_dir_and_move($new_dir, $f);
-                last;
+                last; # break out of loop
             }
         }
     }
