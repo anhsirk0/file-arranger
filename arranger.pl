@@ -64,6 +64,7 @@ sub print_detail {
     my ($detail) = @_;
     my $current_dir = getcwd;
     $detail =~ s/$current_dir\///g;
+    $detail =~ s/\/+/\//g;
     print $detail;
 }
 
