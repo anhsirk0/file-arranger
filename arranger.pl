@@ -36,7 +36,7 @@ $w_logfile =~ s/ /_/g; # replace spaces with underscores
 # store initial & final loacation of moved files
 my $files_moved_details = "";
 # hash; Directory name as keys & file extensions as values
-my %def_ext;
+my %def_ext; # default extensions
 $def_ext{"Images"} = [qw/jpg png jpeg svg webp gif ico svg/];
 $def_ext{"Music"} = [qw/mp3 m3u ogg wav opus mid midi/];
 $def_ext{"Videos"} = [qw/mp4 mkv avi flv ts mpeg/];
@@ -50,7 +50,7 @@ sub read_config {
     while(<FH>) {
         for ($_) {
             s/\#.*//; # ignore comments
-            s/\s+/ /g; # strip whitespace
+            s/\s+/ /g; # remove extra whitespace
             s/^\s+//g; # strip left whitespace
             s/\s+$//g; # strip right whitespace
         }
@@ -79,10 +79,10 @@ sub wanted {
     my $name = $File::Find::name;
     my $file = (split "/", $name)[-1];
     if ($file =~ /^\./) { return } # ignore hidden files/dirs
+
     if (-f) {
         push(@all_files, $name);
-    }
-    elsif (-d) {
+    } elsif (-d) {
         push(@all_dirs, $name);
     }
 }
@@ -92,7 +92,7 @@ sub create_dir_and_move {
     my ($new_dir, $f) = @_;
     my $dir_created;
     if ($dry_run) { # if dry run dont create dir
-        $dir_created = 1
+        $dir_created = 1 # pretend dir_created
     } else {
         $dir_created = (-d $new_dir) || make_path($new_dir);
     }
@@ -128,7 +128,8 @@ sub arrange {
         wanted => \&wanted,
     }, $dir);
 
-    unless (@all_files) { print "No files to move\n"; exit }
+    unless (@all_files) { return }
+
     if ($by_name) { arrange_by_name($dir) ; return }
     if ($no_arrange) { return }
     foreach my $f (@all_files) {
@@ -192,10 +193,6 @@ sub revert_move {
 # uses @all_dirs to remove empty dirs (rmdir only remove dir if empty)
 sub delete_empty_dirs {
     my $dirs_deleted = 0;
-    unless (@all_dirs && $revert) {
-        $no_arrange = 1; # just find files
-        arrange();
-    }
     foreach my $dir (@all_dirs) {
         rmdir($dir) && $dirs_deleted++;
     }
