@@ -219,37 +219,38 @@ sub start_arrange {
 }
 
 sub print_help {
-    print "usage: arranger [dirs] [options]\n\n";
-    print "-m, --maxdepth=INT   specify maxdepth (> 1)\n";
-    print "-h, --help    show this help message\n";
-    print "-dry, --dry-run    show what will happen without actually arranging\n";
-    print "-v, --verbose    print file name while moving\n\n";
-    print "-rev, --revert    revert the move (require a logfile)\n";
-    print "-log, --logfile=STR    specify logfile (required for reverting)\n\n";
-    print "-no-log    dont save log\n";
-    print "-no-unknown    dont move unrecognised filetypes\n";
-    print "-no-arrange    dont move any file (helpful if you only want to delete empty dirs)\n";
-    print "-delete-empty    delete empty directories (if any)\n\n";
-    print "-ext, --extensions=STRs specify extension(s) to move (requires a Directory)\n";
-    print "-dir, --directory=STR specify the Directory to move files in (required by -ext)\n";
+    my $help_text = qq{usage: arranger [dirs] [options]\n
+    -m, --maxdepth=INT \t\t specify maxdepth (> 1)
+    -h, --help \t\t\t show this help message
+    -dry, --dry-run \t\t show what will happen without moving
+    -v, --verbose \t\t print file name while moving
+    -rev, --revert \t\t revert the move (require a logfile)
+    -log, --logfile=STR \t specify logfile (required for reverting)
+    -nl, --no-log \t\t dont save log
+    -nu, --no-unknown \t\t dont move unrecognised filetypes
+    -na, --no-arrange \t\t dont arrange (use when you want to delete empty dirs)
+    -de, --delete-empty \t delete empty directories (will also arrange)
+    -ext, --extensions=STRs \t extension(s) to move (requires a Directory)
+    -dir, --directory=STR \t Directory to move files (required by -ext)\n};
+    print $help_text;
 }
 
 sub main {
     read_config();
 
     GetOptions (
-        "help" => \$help,
-        "maxdepth=i" => \$maxdepth,
-        "revert" => \$revert,
-        "verbose" => \$verbose,
-        "dry-run" => \$dry_run,
-        "logfile=s" => \$logfile,
-        "no-log" => \$keep_log,
-        "no-unknown" => \$no_others,
-        "no-arrange" => \$no_arrange,
-        "delete-empty" => \$delete_empty,
-        "extensions=s{1,}" => \@user_ext,
-        "directory=s" => \$user_dir,
+        "help|h" => \$help,
+        "maxdepth|max=i" => \$maxdepth,
+        "revert|rev" => \$revert,
+        "verbose|v" => \$verbose,
+        "dry-run|dry" => \$dry_run,
+        "logfile|log=s" => \$logfile,
+        "no-log|nl" => \$keep_log,
+        "no-unknown|nu" => \$no_others,
+        "no-arrange|na" => \$no_arrange,
+        "delete-empty|de" => \$delete_empty,
+        "extensions|ext=s{1,}" => \@user_ext,
+        "directory|dir=s" => \$user_dir,
         "name=s{1,}" => \@user_names,
         "iname=s{1,}" => \@user_inames
     ) or die("Error in command line arguments\n");
