@@ -29,8 +29,8 @@ my $no_others;
 my $no_arrange;
 my $delete_empty;
 my $moved_files_count = 0;
-my $config_file = $ENV{HOME} . "/.config/arranger/arranger.conf";
-my $w_logfile = "arrange_log_" . localtime();
+my $config_file = $ENV{HOME} . "/.config/arng/arng.conf";
+my $w_logfile = "arng_log_" . localtime();
 $w_logfile =~ s/ /_/g; # replace spaces with underscores
 
 # store initial & final loacation of moved files
@@ -219,7 +219,7 @@ sub start_arrange {
 }
 
 sub print_help {
-    my $help_text = qq{usage: arranger [dirs] [options]\n
+    my $help_text = qq{usage: arng [dirs] [options]\n
     -m, --maxdepth=INT \t\t specify maxdepth (> 1)
     -h, --help \t\t\t show this help message
     -dry, --dry-run \t\t show what will happen without moving
@@ -266,7 +266,7 @@ sub main {
         $no_others = 1;
     } elsif (@user_ext && ! $user_dir) {
         print "Must specify Extensions and Directory\n";
-        print "Example: arranger -ext png -dir Images\n";
+        print "Example: arng -ext png -dir Images\n";
         exit;
     }
 
@@ -276,8 +276,8 @@ sub main {
 
     if ($by_name && ! $user_dir) {
         print "Must specify Patterns and Directory\n";
-        print "Example: arranger -name Episode -dir Episodes\n";
-        print "Example: arranger -iname episode -dir Episodes\n";
+        print "Example: arng -name Episode -dir Episodes\n";
+        print "Example: arng -iname episode -dir Episodes\n";
         exit;
     }
 

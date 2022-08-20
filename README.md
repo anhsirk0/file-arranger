@@ -2,7 +2,7 @@
 <p align="center">Simple & <strong>Capable</strong> files arranger</p>
 
 ## About
-Arranger is a CLI file arranger written in Perl   
+Arranger is a CLI file arng written in Perl   
 It cleans up your Directory by moving files to their corresponding Directory by their file extension  
 jpg, png, jpeg webp -> Images  
 mp4, mkv, avi, flv -> Videos  
@@ -31,26 +31,26 @@ bash -c "$(curl https://raw.githubusercontent.com/anhsirk0/file-arranger/master/
 
 with wget
 ``` bash
-wget https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arranger.pl -O arranger
+wget https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arng.pl -O arng
 ```
 ### or
 with curl
 ``` bash
-curl https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arranger.pl --output arranger
+curl https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arng.pl --output arng
 ```
 making it executable
 ```bash
-chmod +x arranger
+chmod +x arng
 ```
 copying it to $PATH (~/.local/bin/ , this step is optional)
 ```bash
-cp arranger ~/.local/bin/
+cp arng ~/.local/bin/
 ```
 
 ## Usage
 
 ```bash
-arranger [dirs] [options]
+arng [dirs] [options]
 ```
 will arrange current Directory  
 see examples for detailed usage
@@ -60,89 +60,89 @@ see examples for detailed usage
 ![out1.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out1.png)
 
 ### adding verbose
-> arranger -v
+> arng -v
 ![out6.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out6.png)
 
 ### moving specific files to provided dir
-> arranger -ext py -dir Python
+> arng -ext py -dir Python
 ![out2.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out2.png)
 
 ### reversing the move via a logfile
-> arranger -rev -logfile arrange_log
+> arng -rev -logfile arrange_log
 ![out3.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out3.png)
 
 ### not saving logs and not moving unrecognised filetypes to 'Other'
-> arranger -no-log -no-unknown
+> arng -no-log -no-unknown
 ![out4.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out4.png)
 
 ### arranging given Directories
-> arranger dir1 dir2
+> arng dir1 dir2
 ![out5.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out5.png)
 
 ### dry-run
-> arranger -dry-run
+> arng -dry-run
 ![dry.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/dry.png)
 
 ### deleting empty directories
-> arranger -de -no-arrange
+> arng -de -no-arrange
 ![delete.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/delete.png)
 
 ### name/iname
-> arranger -name "Episode.*" -dir "Episodes"
-> arranger -iname "episode.*" -dir "Episodes"
+> arng -name "Episode.*" -dir "Episodes"
+> arng -iname "episode.*" -dir "Episodes"
 ![name.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/name.png)
 
 ## Examples
 ```bash
-arranger mydir1 mydir2 mydir3
+arng mydir1 mydir2 mydir3
 ```
 >will arrange mydir1 mydir2 mydir3 Directories one by one
 
 
 ```bash
-arranger -no-log
+arng -no-log
 ```
 >arrange current Directory and dont save logfile
 
 
 ```bash
-arranger -delete-empty 
+arng -delete-empty 
 ```
 >arrange current Directory and also delete empty Directories 
 
 
 ```bash
-arranger -delete-empty -no-arrange
+arng -delete-empty -no-arrange
 ```
 >only delete empty Directories , dont arrange
 
 
 ```bash
-arranger -no-unknown 
+arng -no-unknown 
 ```
 >arrange current Directory and dont move files with unrecognised extensions
 
 
 ```bash
-arranger -ext pl -dir "Perl" 
+arng -ext pl -dir "Perl" 
 ```
 >move all files with pl extension to Directory 'Perl'
 
 
 ```bash
-arranger -ext jpg png jpeg svg -dir "Images" 
+arng -ext jpg png jpeg svg -dir "Images" 
 ```
 >move all files with any of {jpg, png, jpeg, svg} extension to Directory 'Images'
 
 
 ```bash
-arranger -name "*Season*1*" -dir "Season_1" 
+arng -name "*Season*1*" -dir "Season_1" 
 ```
 ```bash
-arranger -iname "*season*1*" -dir "Season_1" 
+arng -iname "*season*1*" -dir "Season_1" 
 ```
 ```bash
-arranger -iname "episode*" "*part*" -name "*Videos*" -dir "Episodes_Parts_and_Videos" 
+arng -iname "episode*" "*part*" -name "*Videos*" -dir "Episodes_Parts_and_Videos" 
 ```
 >move all files with given regex pattern  to Directory 'Season_1'  
 >name for case sensitive regex matches and iname for case insensitive  
@@ -150,23 +150,23 @@ arranger -iname "episode*" "*part*" -name "*Videos*" -dir "Episodes_Parts_and_Vi
 >no need to specify ^ (start of line) and $ (end of line)  
 >wildcard support is now added  
 
-## Tweaking arranger via config file
-you need to create a file ~/.config/arranger/arranger.conf
+## Tweaking arng via config file
+you need to create a file ~/.config/arng/arng.conf
 
 you can download the sample config file and move it into the config Directory
 
 ```bash
-wget https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arranger.conf
+wget https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arng.conf
 ```
 ### or
 with curl
 ``` bash
-curl https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arranger.conf --output arranger.conf
+curl https://raw.githubusercontent.com/anhsirk0/file-arranger/master/arng.conf --output arng.conf
 ```
 
 ### move to config dir
 ```bash
-mv arranger.conf ~/.config/arranger/arranger.conf
+mv arng.conf ~/.config/arng/arng.conf
 ```
 
 ## About config file
