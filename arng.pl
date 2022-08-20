@@ -28,7 +28,9 @@ my $no_others;
 my $no_arrange;
 my $delete_empty;
 my $moved_files_count = 0;
-my $config_file = $ENV{HOME} . "/.config/arng/arng.conf";
+my $config_dir = $ENV{HOME} . "/.config/arng";
+my $config_file = $config_dir . "/arng.conf";
+my $logs_dir = $config_dir . "/logs";
 my $w_logfile = "arng_log_" . localtime();
 $w_logfile =~ s/ /_/g; # replace spaces with underscores
 
@@ -199,7 +201,9 @@ sub delete_empty_dirs {
 
 sub save_log {
     unless ($files_moved_details) { return }
-    open(FH, ">" . $w_logfile) or die "Unable to open $w_logfile\n";
+    unless (-d $logs_dir) { make_path $logs_dir }
+
+    open(FH, ">" . $logs_dir . "/" . $w_logfile) or die "Unable to open $w_logfile\n";
     print FH $files_moved_details;
     close(FH);
 }
