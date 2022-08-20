@@ -1,15 +1,15 @@
-<h1 align="center"><code>Arranger</code></h1>
-<p align="center">Simple & <strong>Capable</strong> files arranger</p>
+<h1 align="center"><code>arng</code></h1>
+<p align="center">Simple & <strong>Capable</strong> files arranger (previously <code>arranger</code>)</p>
 
 ## About
-Arranger is a CLI file arng written in Perl   
+Arng is a CLI file arng written in Perl   
 It cleans up your Directory by moving files to their corresponding Directory by their file extension  
-jpg, png, jpeg webp -> Images  
+jpg, png, jpeg, webp -> Images  
 mp4, mkv, avi, flv -> Videos  
 and other common filetype extensions  
 
 ## Features
-Arranger can
+Arng can
  - control maxdepth when arranging
  - delete empty Directories
  - save logs of what exactly happened
@@ -55,101 +55,113 @@ arng [dirs] [options]
 will arrange current Directory  
 see examples for detailed usage
 
-## Screenshots
-### with no arguements
-![out1.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out1.png)
-
+## Examples
 ### adding verbose
-> arng -v
-![out6.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out6.png)
+```bash
+$ arng -v
+files2.mp4 -> Videos/files2.mp4
+files2.mp3 -> Music/files2.mp3
+files1.mp4 -> Videos/files1.mp4
+files2.pl -> Other/files2.pl
+files1.mp3 -> Music/files1.mp3
+files1.pdf -> Documents/files1.pdf
+files1.pl -> Other/files1.pl
+files2.pdf -> Documents/files2.pdf
+8 Files moved
+```
 
-### moving specific files to provided dir
-> arng -ext py -dir Python
-![out2.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out2.png)
+### moving files by extensions to provided dir
+```bash
+$ arng -ext sh zsh fish -dir shell -v
+script.sh -> shell/script.sh
+script.zsh -> shell/script.zsh
+script.fish -> shell/script.fish
+3 Files moved
+```
 
 ### reversing the move via a logfile
-> arng -rev -logfile arrange_log
-![out3.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out3.png)
+```bash
+$ arng -v
+
+```
 
 ### not saving logs and not moving unrecognised filetypes to 'Other'
-> arng -no-log -no-unknown
-![out4.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out4.png)
-
-### arranging given Directories
-> arng dir1 dir2
-![out5.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/out5.png)
+```bash
+$ arng -nl -nu
+```
+or 
+```bash
+$ arng --no-log --no-unknown
+```
 
 ### dry-run
-> arng -dry-run
-![dry.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/dry.png)
+```bash
+$ arng -dry
+files2.mp4 -> Videos/files2.mp4
+files2.mp3 -> Music/files2.mp3
+files1.mp4 -> Videos/files1.mp4
+files2.pl -> Other/files2.pl
+files1.mp3 -> Music/files1.mp3
+files1.pdf -> Documents/files1.pdf
+files1.pl -> Other/files1.pl
+files2.pdf -> Documents/files2.pdf
+0 Files moved
+```
 
 ### deleting empty directories
-> arng -de -no-arrange
-![delete.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/delete.png)
+```bash
+$ arng --delete-empty --no-arrange
+2 Directory deleted
+0 files moved
+```
+or
+```bash
+$ arng -de -na
+2 Directory deleted
+0 files moved
+```
 
 ### name/iname
-> arng -name "Episode.*" -dir "Episodes"
-> arng -iname "episode.*" -dir "Episodes"
-![name.png](https://github.com/anhsirk0/file-arranger/blob/master/screenshots/name.png)
-
-## Examples
 ```bash
-arng mydir1 mydir2 mydir3
+$ arng -iname "episode*" -dir "Episodes" -v
+episode_1.mp4 -> Episodes/episode_1.mp4
+EPISODE_3.mp4 -> Episodes/EPISODE_3.mp4
+episode_2.mp4 -> Episodes/episode_2.mp4
+EPISODE_4.mp4 -> Episodes/EPISODE_4.mp4
+4 Files moved
 ```
->will arrange mydir1 mydir2 mydir3 Directories one by one
 
-
+### maxdepth
 ```bash
-arng -no-log
+$ tree
+.
+└── dir
+    ├── subdir1
+    │   ├── subdir1_file.mp3
+    │   ├── subdir1_file.mp4
+    │   └── subdir1_file.pdf
+    └── subdir2
+        ├── subdir2_file.mp3
+        ├── subdir2_file.mp4
+        └── subdir2_file.pdf
+
+3 directories, 6 files
 ```
->arrange current Directory and dont save logfile
-
-
-```bash
-arng -delete-empty 
-```
->arrange current Directory and also delete empty Directories 
-
-
-```bash
-arng -delete-empty -no-arrange
-```
->only delete empty Directories , dont arrange
-
 
 ```bash
-arng -no-unknown 
-```
->arrange current Directory and dont move files with unrecognised extensions
-
-
-```bash
-arng -ext pl -dir "Perl" 
-```
->move all files with pl extension to Directory 'Perl'
-
-
-```bash
-arng -ext jpg png jpeg svg -dir "Images" 
-```
->move all files with any of {jpg, png, jpeg, svg} extension to Directory 'Images'
-
-
-```bash
-arng -name "*Season*1*" -dir "Season_1" 
+$ arng
+0 files moved
 ```
 ```bash
-arng -iname "*season*1*" -dir "Season_1" 
+$ arng --maxdepth 3 -v
+dir/subdir2/subdir2_file.mp4 -> Videos/subdir2_file.mp4
+dir/subdir2/subdir2_file.pdf -> Documents/subdir2_file.pdf
+dir/subdir2/subdir2_file.mp3 -> Music/subdir2_file.mp3
+dir/subdir1/subdir1_file.mp4 -> Videos/subdir1_file.mp4
+dir/subdir1/subdir1_file.pdf -> Documents/subdir1_file.pdf
+dir/subdir1/subdir1_file.mp3 -> Music/subdir1_file.mp3
+6 Files moved
 ```
-```bash
-arng -iname "episode*" "*part*" -name "*Videos*" -dir "Episodes_Parts_and_Videos" 
-```
->move all files with given regex pattern  to Directory 'Season_1'  
->name for case sensitive regex matches and iname for case insensitive  
->you can use multiple patterns for both -name and -iname   
->no need to specify ^ (start of line) and $ (end of line)  
->wildcard support is now added  
-
 ## Tweaking arng via config file
 you need to create a file ~/.config/arng/arng.conf
 
