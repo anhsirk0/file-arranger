@@ -85,10 +85,12 @@ $ arng -rev "~/.config/arng/logs/logfile1234"
 ### not saving logs and not moving unrecognised filetypes to 'Other'
 ```bash
 $ arng -nl -nu
+8 files moved
 ```
 or 
 ```bash
 $ arng --no-log --no-unknown
+8 files moved
 ```
 
 ### dry-run
