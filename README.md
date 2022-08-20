@@ -52,10 +52,7 @@ cp arng ~/.local/bin/
 ```bash
 arng [dirs] [options]
 ```
-will arrange current Directory  
-see examples for detailed usage
 
-## Examples
 ### adding verbose
 ```bash
 $ arng -v
