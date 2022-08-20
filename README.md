@@ -52,6 +52,20 @@ cp arng ~/.local/bin/
 ```bash
 arng [dirs] [options]
 ```
+### dry-run
+
+```bash
+$ arng -dry
+files2.mp4 -> Videos/files2.mp4
+files2.mp3 -> Music/files2.mp3
+files1.mp4 -> Videos/files1.mp4
+files2.pl -> Other/files2.pl
+files1.mp3 -> Music/files1.mp3
+files1.pdf -> Documents/files1.pdf
+files1.pl -> Other/files1.pl
+files2.pdf -> Documents/files2.pdf
+0 Files moved
+```
 
 ### adding verbose
 ```bash
@@ -77,6 +91,7 @@ script.fish -> shell/script.fish
 ```
 
 ### reversing the move via a logfile
+logfiles are stored in `~/.config/arng/logs`
 ```bash
 $ arng -rev "~/.config/arng/logs/logfile1234"
 8 files moved
@@ -91,20 +106,6 @@ or
 ```bash
 $ arng --no-log --no-unknown
 8 files moved
-```
-
-### dry-run
-```bash
-$ arng -dry
-files2.mp4 -> Videos/files2.mp4
-files2.mp3 -> Music/files2.mp3
-files1.mp4 -> Videos/files1.mp4
-files2.pl -> Other/files2.pl
-files1.mp3 -> Music/files1.mp3
-files1.pdf -> Documents/files1.pdf
-files1.pl -> Other/files1.pl
-files2.pdf -> Documents/files2.pdf
-0 Files moved
 ```
 
 ### deleting empty directories
@@ -183,20 +184,3 @@ mv arng.conf ~/.config/arng/arng.conf
 ## About config file
  - everything should be space separated (don't worry about extra/trailing spaces)
  - first word of line would be Directory name rest would be file extensions associated with that Directory
-
-## Available options
-**-m** or **--maxdepth=INT**   specify maxdepth (> 1)  
-**-h** or **--help**    show this help message  
-**-dry** or **--dry-run**    show what will happen without actually arranging  
-**-v** or **--verbose**    print file name while moving  
-**-rev** or **--revert**    revert the move (require a logfile)  
-**-log** or **--logfile=STR**    specify logfile (required for reverting)  
-**-no-log**    dont save log  
-**-no-unknown**    dont move unrecognised filetypes  
-**-no-arrange**    dont move any file (helpful if you only want to delete empty dirs)  
-**-delete-empty**    delete empty directories (if any)  
-**-ext** or **--extensions=STRs** specify extension(s) to move (requires a Directory)  
-**-name=STRs** specify patterns (case sensitive) to move files (requires a Directory)  
-**-iname=STRs** specify patterns (case insensitive) to move files (requires a Directory)  
-**-dir** or **--directory=STR** specify the Directory to move files in (required by -ext/name/iname)  
-
