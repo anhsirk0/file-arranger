@@ -21,7 +21,6 @@ my $user_dir;
 my $help;
 my $revert;
 my $verbose;
-my $logfile;
 my $dry_run;
 my $keep_log;
 my $by_name;
@@ -177,10 +176,9 @@ sub arrange_by_name {
     }
 }
 
-# restore the moved files ; require a $logfile to restore
+# restore the moved files ; require a logfile to restore
 sub revert_move {
-    unless ($logfile) { print "Log file is required\n"; exit }
-    open(FH, '<' . $logfile) or die "Unable to open log file\n";
+    open(FH, '<' . $revert) or die "Unable to open log file\n";
     while(<FH>) {
         my ($initial, $final) = split " -> ", $_;
         chomp $final;
@@ -241,10 +239,9 @@ sub main {
     GetOptions (
         "help|h" => \$help,
         "maxdepth|max=i" => \$maxdepth,
-        "revert|rev" => \$revert,
+        "revert|rev=s" => \$revert,
         "verbose|v" => \$verbose,
         "dry-run|dry" => \$dry_run,
-        "logfile|log=s" => \$logfile,
         "no-log|nl" => \$keep_log,
         "no-unknown|nu" => \$no_others,
         "no-arrange|na" => \$no_arrange,
