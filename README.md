@@ -81,8 +81,8 @@ script.fish -> shell/script.fish
 
 ### reversing the move via a logfile
 ```bash
-$ arng -v
-
+$ arng -rev "~/.config/arng/logs/logfile1234"
+8 files moved
 ```
 
 ### not saving logs and not moving unrecognised filetypes to 'Other'
